@@ -1,4 +1,4 @@
-# Import pandas
+# Import required packages
 
 import pandas as pd
 import numpy as np
@@ -11,8 +11,6 @@ from sklearn.metrics import confusion_matrix
 from sklearn.externals import joblib
 
 
-
-
 # Load dataset
 cc_apps = pd.read_csv("../datasets/cc_approvals.data",header=None)
 
@@ -22,10 +20,6 @@ print(cc_apps.head())
 
 # Save the column names for Flask API
 cc_apps.columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "DriversLicense", "Citizen", "ZipCode", "Income","ApprovalStatus"]
-model_columns=list(cc_apps.columns)
-#model_columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "DriversLicense", "Citizen", "ZipCode", "Income","ApprovalStatus"]
-print("columns are",model_columns)
-joblib.dump(model_columns, 'model_columns.pkl')
 
 # Print summary statistics
 cc_apps_description = cc_apps.describe()
@@ -73,6 +67,8 @@ for col in cc_apps.columns:
 # Count the number of NaNs in the dataset and print the counts to verify
 cc_apps.isnull().sum()
 
+
+
 # Instantiate LabelEncoder
 
 le = LabelEncoder()
@@ -84,16 +80,17 @@ for col in cc_apps.columns:
         cc_apps[col] = le.fit_transform(cc_apps[col])
 
 
-# Drop the features 11 and 13 and convert the DataFrame to a NumPy array
 
-cc_apps = cc_apps.drop(['DriversLicense', 'ZipCode'], axis=1)
-cc_apps = cc_apps.values
-
-#model_columns=list(cc_apps.columns)
-#model_columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "DriversLicense", "Citizen", "ZipCode", "Income","ApprovalStatus"]
-model_columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "Citizen", "Income","ApprovalStatus"]
+# Save the columns names list before modifying DataFrame to NumPy array
+model_columns=list(cc_apps.columns)
+model_columns.remove('DriversLicense')
+model_columns.remove('ZipCode')
 print("columns are",model_columns)
 joblib.dump(model_columns, 'model_columns.pkl')
+
+# Drop the features 11(DriversLicense) and 13(ZipCode) and convert the DataFrame to a NumPy array
+cc_apps = cc_apps.drop(['DriversLicense', 'ZipCode'], axis=1)
+cc_apps = cc_apps.values
 
 # Segregate features and labels into separate variables
 X,y = cc_apps[:,0:] , cc_apps[:,13]
@@ -127,12 +124,15 @@ joblib.dump(logreg, 'model.pkl')
 
 # Use logreg to predict instances from the test set and store it
 y_pred = logreg.predict(rescaledX_test)
+print("Predicted values of Y \n",y_pred)
 
 # Get the accuracy score of logreg model and print it
 print("Accuracy of logistic regression classifier: ", logreg.score(rescaledX_test,y_test))
 
 # Print the confusion matrix of the logreg model
+
 confusion_matrix(y_test,y_pred)
+print("Confusion Matrix for Logistic Regression Model\n",confusion_matrix(y_test,y_pred))
 
 
 

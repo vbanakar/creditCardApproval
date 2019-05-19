@@ -16,8 +16,10 @@ def predict():
             query = query.reindex(columns=model_columns, fill_value=0)
 
             prediction = list(lr.predict(query))
+            prediction=[int(x) for x in prediction]
+            print("predictions are ", prediction)
 
-            return jsonify({'prediction': str(prediction)})
+            return jsonify({'prediction': (str(prediction))})
 
         except:
 
