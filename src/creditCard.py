@@ -23,6 +23,7 @@ print(cc_apps.head())
 # Save the column names for Flask API
 cc_apps.columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "DriversLicense", "Citizen", "ZipCode", "Income","ApprovalStatus"]
 model_columns=list(cc_apps.columns)
+#model_columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "DriversLicense", "Citizen", "ZipCode", "Income","ApprovalStatus"]
 print("columns are",model_columns)
 joblib.dump(model_columns, 'model_columns.pkl')
 
@@ -72,9 +73,6 @@ for col in cc_apps.columns:
 # Count the number of NaNs in the dataset and print the counts to verify
 cc_apps.isnull().sum()
 
-print(type(cc_apps))
-
-
 # Instantiate LabelEncoder
 
 le = LabelEncoder()
@@ -90,6 +88,12 @@ for col in cc_apps.columns:
 
 cc_apps = cc_apps.drop(['DriversLicense', 'ZipCode'], axis=1)
 cc_apps = cc_apps.values
+
+#model_columns=list(cc_apps.columns)
+#model_columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "DriversLicense", "Citizen", "ZipCode", "Income","ApprovalStatus"]
+model_columns = ["Gender", "Age", "Debt", "Married", "BankCustomer", "EducationLevel", "Ethnicity", "YearsEmployed", "PriorDefault", "Employed", "CreditScore", "Citizen", "Income","ApprovalStatus"]
+print("columns are",model_columns)
+joblib.dump(model_columns, 'model_columns.pkl')
 
 # Segregate features and labels into separate variables
 X,y = cc_apps[:,0:] , cc_apps[:,13]
