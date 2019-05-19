@@ -1,0 +1,7 @@
+[
+    {"Gender": "b", "Age": "38.2", "Debt": 0.0, "Married": "u", "BankCustomer": "g", "EducationLevel": "w", "Ethnicity": "v", "YearsEmployed": 1.25, "PriorDefault": "t", "Employed": "t", "CreditScore": 1,  "Citizen": "g",  "Income":   0,"ApprovalStatus":"+"},
+    {"Gender": "a", "Age": "45.3", "Debt": 4.4, "Married": "u", "BankCustomer": "g", "EducationLevel": "q", "Ethnicity": "h", "YearsEmployed": 3.04, "PriorDefault": "t", "Employed": "t", "CreditScore": 6,  "Citizen": "g",  "Income": 560,"ApprovalStatus":"+"},
+    {"Gender": "a", "Age": "21.6", "Debt": 0.9, "Married": "u", "BankCustomer": "g", "EducationLevel": "q", "Ethnicity": "h", "YearsEmployed": 1.50, "PriorDefault": "t", "Employed": "f", "CreditScore": 0,  "Citizen": "g",  "Income": 824,"ApprovalStatus":"+"},
+    {"Gender": "b", "Age": "59.5", "Debt": 2.5, "Married": "u", "BankCustomer": "g", "EducationLevel": "w", "Ethnicity": "v", "YearsEmployed": 3.75, "PriorDefault": "t", "Employed": "t", "CreditScore": 5,  "Citizen": "g",  "Income":   3,"ApprovalStatus":"+"},
+    {"Gender": "b", "Age": "21.5", "Debt": 5.5, "Married": "u", "BankCustomer": "g", "EducationLevel": "w", "Ethnicity": "v", "YearsEmployed": 1.71, "PriorDefault": "t", "Employed": "f", "CreditScore": 0,  "Citizen": "s",  "Income":   0,"ApprovalStatus":"+"}
+]
