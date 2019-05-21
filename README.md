@@ -58,7 +58,11 @@ Structure of the Dataset
 ```
 
 
-Installation
+Execution and Testing
 --------------
 
-1) Execute flaskApp.py using Python3.6
+1) Execute flaskApp.py using Python3.6. This wll start the server on localhost at port 9999
+
+2) Use Postman to send request to `http://127.0.0.1:9999/predict`
+   *Note: Sample test data is present in 'datasets/testData/req.json'*
+ 
