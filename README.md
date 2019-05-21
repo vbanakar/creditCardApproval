@@ -65,4 +65,8 @@ Execution and Testing
 
 2) Use Postman to send request to `http://127.0.0.1:9999/predict`
    *Note: Sample test data is present in 'datasets/testData/req.json'*
+   
+3) Response received from the flaskApp service will be array of values with either 0 or 1 with 0 indicating the CreditCard Approval being positive and 1 being negative
+    *Note: For the sample test data request; all 4 records get postive response i.e., array of 0s will be received
+ 
  
